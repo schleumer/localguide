@@ -2,6 +2,10 @@ import crypto from "crypto";
 import mongoose from "mongoose";
 import * as argon2 from "argon2";
 
+import a from "@localguide/graphql";
+
+console.log(a);
+
 export type UserDocument = mongoose.Document & {
     name: string;
     email: string;
@@ -47,7 +51,7 @@ userSchema.pre("save", function save(next) {
     });
 });
 
-const comparePassword: comparePasswordFunction = function (candidatePassword, cb) {
+const comparePassword: comparePasswordFunction = function (this: UserDocument, candidatePassword, cb) {
     argon2.verify(candidatePassword, this.password).then((success) => {
         cb(undefined, success);
     }).catch((err) => {

@@ -14,6 +14,9 @@
             "*": [
                 "node_modules/*",
                 "src/types/*"
+            ],
+            "@localguide/*": [
+                "src/@localguide/*"
             ]
         }
     },
