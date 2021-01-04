@@ -14,6 +14,7 @@ export type UserDocument = mongoose.Document & {
     passwordResetExpires?: Date;
 
     tokens: AuthToken[];
+    permissions: string[];
 
     comparePassword: comparePasswordFunction;
     gravatar: (size: number) => string;
